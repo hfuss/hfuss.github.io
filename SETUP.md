@@ -1,3 +1,7 @@
+---
+title: Setup dpd_cpp
+---
+
 ## Setting up _dpd_cpp_ on the HPC
 <br>
 **_dpd_cpp_** has been compiled on the **HPC** in such a way that allows us to use it's executable programs from anywhere within the **HPC**. It does so by using what are known as runtime libraries, in the form of `.so` or shared object files. These libraries contain most of the actual code the programs use. And so, certain path variables in your `csh` environment need to be updated, so it can find the executables, and the `.so` files they require, whenever you run them.  
