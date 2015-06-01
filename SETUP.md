@@ -1,5 +1,6 @@
 ---
 title: Setup dpd_cpp
+layout: default
 ---
 
 ## Setting up _dpd_cpp_ on the HPC
@@ -11,18 +12,22 @@ Instructions for updating your paths as well as compiling **_dpd_cpp_** are give
 ### Configuring your `csh` environment
 There's a short `bash` script on the **HPC** which you can run to update your `csh` path variables. If you log on to the **HPC** and type the commands below, you should get similar output as to what has been shown.  
 
-	[whfuss@login04 ~]$ cd /gpfs_partners/yingling/backup/Fuss/dpd_cpp/dpd_cpp/
-	[whfuss@login04 dpd_cpp]$ ./configureHPC.sh 
+<pre class="terminal">
+
+	$ cd /gpfs_partners/yingling/backup/Fuss/dpd_cpp/dpd_cpp/
+	$ ./configureHPC.sh
 		You need to run: `source ~/.cshrc` when this is done running.
 		You need to run: `source ~/.cshrc` when this is done running.
 		You need to run: `source ~/.cshrc` when this is done running.
-	[whfuss@login04 dpd_cpp]$ source ~/.cshrc
-	[whfuss@login04 dpd_cpp]$ ./configureHPC.sh 
+	$ source ~/.cshrc
+	$ ./configureHPC.sh 
 		Path already up-to-date.
 		LD_LIBRARY_PATH already up-to-date.
 		LD_LIBRARY_PATH already up-to-date.
-	[whfuss@login04 dpd_cpp]$  
-	
+	$  
+
+</pre>
+
 When you initially run `configureHPC.sh` you may see the "You need to run..." message only once or twice and one or two of the up-to-date messages, that just means you already had some of the required folders in your path variables.  
 
 If you see the "You need to run..." message your first time running `configreHPC.sh` then you must then run the `source ~/.cshrc` command to update your environment without having to logout and log back in.  
@@ -68,7 +73,9 @@ You can run `configureHPC.sh` a second time after updating your environment, to 
 
 The following shows how to run `linkerBuilder` to initialize a BACAB triblock system:
 
-	[whfuss@login04 dpd_cpp]$ linkerBuilder
+<pre class="terminal">
+
+	$ linkerBuilder
 		Enter box length: 36
 		Enter bond length: 0.1
 		Enter polymer volume fraction: 0.1
@@ -77,13 +84,16 @@ The following shows how to run `linkerBuilder` to initialize a BACAB triblock sy
 		Enter linker block length: 4
 		Enter pec block charge density: 1.0
 		Enter desired filename: newdata.dat
-	[whfuss@login04 dpd_cpp]$
-	
+	$
+
+</pre>	
 
 The following shows to run `triblockProcessor` to process a BAB triblock trajectory by redirecting its `stdin` to `params.in` and its `stout` to `results.out`:
 
-	[whfuss@login04 dpd_cpp]$ vim params.in
-	[whfuss@login04 dpd_cpp]$ tail params.in
+<pre class="terminal">
+	
+	$ vim params.in
+	$ tail params.in
 		36
 		2
 		1
@@ -93,20 +103,26 @@ The following shows to run `triblockProcessor` to process a BAB triblock traject
 		30
 		1.25
 		0.5
-	[whfuss@login04 dpd_cpp]$ triblockProcessor < params.in > results.out
-	[whfuss@login04 dpd_cpp]$ tail -n 3 results.out
+	$ triblockProcessor < params.in > results.out
+	$ tail -n 3 results.out
    			Cores     AvgAgg     AvgDistCores     Stem     Petal
 		AVG:   1.0000 368.0000   0.0000   0.0082   0.9918
 		STDDEV:   0.0000   0.0000   0.0000   0.0000   0.0000
-	[whfuss@login04 dpd_cpp]$ 
+	$
+
+</pre>
 
 ### Compiling `libdpd.so` and the executables
 If you need to recompile the executables or **_dpd_cpp_**'s runtime library `libdpd.so` on the **HPC**, you can do so easily using the commands below. 
 
-	[whfuss@login04 ~]$ cd /gpfs_partners/yingling/backup/Fuss/dpd_cpp/dpd_cpp/
-	[whfuss@login04 dpd_cpp]$ ./compileHPC.sh > myCompile.out
-	[whfuss@login04 dpd_cpp]$ diff myCompile.out compile.out 
-	[whfuss@login04 dpd_cpp]$
+<pre class="terminal">
+
+	$ cd /gpfs_partners/yingling/backup/Fuss/dpd_cpp/dpd_cpp/
+	$ ./compileHPC.sh > myCompile.out
+	$ diff myCompile.out compile.out 
+	$
+
+</pre>
 	
 `compile.out` is a text file containing the output that should be produced by `compileHPC.sh` if the compilation was successful. So it's important to redirect the output of `compileHPC.sh` to another text file, in the example above it was `myCompile.out`, so the two outputs can be compared.  
 
