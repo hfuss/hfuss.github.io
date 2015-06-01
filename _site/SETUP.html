@@ -21,7 +21,7 @@
 <p>There&#39;s a short <code>bash</code> script on the <strong>HPC</strong> which you can run to update your <code>csh</code> path variables. If you log on to the <strong>HPC</strong> and type the commands below, you should get similar output as to what has been shown.  </p>
 
 <pre class="terminal">
-
+<p>
     $ cd /gpfs_partners/yingling/backup/Fuss/dpd_cpp/dpd_cpp/
     $ ./configureHPC.sh
         You need to run: `source ~/.cshrc` when this is done running.
@@ -33,7 +33,7 @@
         LD_LIBRARY_PATH already up-to-date.
         LD_LIBRARY_PATH already up-to-date.
     $  
-
+</p>
 </pre>
 
 <p>When you initially run <code>configureHPC.sh</code> you may see the &quot;You need to run...&quot; message only once or twice and one or two of the up-to-date messages, that just means you already had some of the required folders in your path variables.  </p>
@@ -97,7 +97,7 @@
 <p>The following shows how to run <code>linkerBuilder</code> to initialize a BACAB triblock system:</p>
 
 <pre class="terminal">
-
+<p>
     $ linkerBuilder
         Enter box length: 36
         Enter bond length: 0.1
@@ -108,7 +108,7 @@
         Enter pec block charge density: 1.0
         Enter desired filename: newdata.dat
     $
-
+</p>
 </pre>  
 
 <p>The following shows to run <code>triblockProcessor</code> to process a BAB triblock trajectory by redirecting its <code>stdin</code> to <code>params.in</code> and its <code>stout</code> to <code>results.out</code>:</p>

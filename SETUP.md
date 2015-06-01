@@ -5,15 +5,15 @@ layout: default
 
 ## Setting up <em>dpd_cpp</em> on the HPC
 <br>
-**<em>dpd_cpp</em>** has been compiled on the **HPC** in such a way that allows us to use it's executable programs from anywhere within the **HPC**. It does so by using what are known as runtime libraries, in the form of `.so` or shared object files. These libraries contain most of the actual code the programs use. And so, certain path variables in your `csh` environment need to be updated, so it can find the executables, and the `.so` files they require, whenever you run them.  
+**<em>dpd\_cpp</em>** has been compiled on the **HPC** in such a way that allows us to use it's executable programs from anywhere within the **HPC**. It does so by using what are known as runtime libraries, in the form of `.so` or shared object files. These libraries contain most of the actual code the programs use. And so, certain path variables in your `csh` environment need to be updated, so it can find the executables, and the `.so` files they require, whenever you run them.  
   
-Instructions for updating your paths as well as compiling **<em>dpd_cpp</em>** are given below. You can also find a brief description of **<em>dpd_cpp</em>**'s current executable programs which build and process our triblock simulations.
+Instructions for updating your paths as well as compiling **<em>dpd\_cpp</em>** are given below. You can also find a brief description of **<em>dpd\_cpp</em>**'s current executable programs which build and process our triblock simulations.
   
 ### Configuring your `csh` environment
 There's a short `bash` script on the **HPC** which you can run to update your `csh` path variables. If you log on to the **HPC** and type the commands below, you should get similar output as to what has been shown.  
 
 <pre class="terminal">
-
+<p>
 	$ cd /gpfs_partners/yingling/backup/Fuss/dpd_cpp/dpd_cpp/
 	$ ./configureHPC.sh
 		You need to run: `source ~/.cshrc` when this is done running.
@@ -25,7 +25,7 @@ There's a short `bash` script on the **HPC** which you can run to update your `c
 		LD_LIBRARY_PATH already up-to-date.
 		LD_LIBRARY_PATH already up-to-date.
 	$  
-
+</p>
 </pre>
 
 When you initially run `configureHPC.sh` you may see the "You need to run..." message only once or twice and one or two of the up-to-date messages, that just means you already had some of the required folders in your path variables.  
@@ -74,7 +74,7 @@ You can run `configureHPC.sh` a second time after updating your environment, to 
 The following shows how to run `linkerBuilder` to initialize a BACAB triblock system:
 
 <pre class="terminal">
-
+<p>
 	$ linkerBuilder
 		Enter box length: 36
 		Enter bond length: 0.1
@@ -85,13 +85,13 @@ The following shows how to run `linkerBuilder` to initialize a BACAB triblock sy
 		Enter pec block charge density: 1.0
 		Enter desired filename: newdata.dat
 	$
-
+</p>
 </pre>	
 
 The following shows to run `triblockProcessor` to process a BAB triblock trajectory by redirecting its `stdin` to `params.in` and its `stout` to `results.out`:
 
 <pre class="terminal">
-	
+<p>
 	$ vim params.in
 	$ tail params.in
 		36
@@ -109,19 +109,19 @@ The following shows to run `triblockProcessor` to process a BAB triblock traject
 		AVG:   1.0000 368.0000   0.0000   0.0082   0.9918
 		STDDEV:   0.0000   0.0000   0.0000   0.0000   0.0000
 	$
-
+</p>
 </pre>
 
 ### Compiling `libdpd.so` and the executables
-If you need to recompile the executables or **<em>dpd_cpp</em>**'s runtime library `libdpd.so` on the **HPC**, you can do so easily using the commands below. 
+If you need to recompile the executables or **<em>dpd\_cpp</em>**'s runtime library `libdpd.so` on the **HPC**, you can do so easily using the commands below. 
 
 <pre class="terminal">
-
+<p>
 	$ cd /gpfs_partners/yingling/backup/Fuss/dpd_cpp/dpd_cpp/
 	$ ./compileHPC.sh > myCompile.out
 	$ diff myCompile.out compile.out 
 	$
-
+</p>
 </pre>
 	
 `compile.out` is a text file containing the output that should be produced by `compileHPC.sh` if the compilation was successful. So it's important to redirect the output of `compileHPC.sh` to another text file, in the example above it was `myCompile.out`, so the two outputs can be compared.  
