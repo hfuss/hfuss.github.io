@@ -6,6 +6,9 @@ layouts:     ./_layouts
 data_source: ./_data
 collections: null
 
+highlighter: pygments
+github: [Repository metadata]
+
 # Handling Reading
 safe:         false
 include:      [".htaccess"]
@@ -27,7 +30,6 @@ gems:      []
 # Conversion
 #markdown:    kramdown
 markdown:    redcarpet
-highlighter: rouge
 lsi:         false
 excerpt_separator: "\n\n"
 
