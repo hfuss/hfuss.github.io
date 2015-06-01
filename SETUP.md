@@ -3,11 +3,11 @@ title: Setup dpd_cpp
 layout: default
 ---
 
-## Setting up _dpd_cpp_ on the HPC
+## Setting up <em>dpd_cpp</em> on the HPC
 <br>
-**_dpd_cpp_** has been compiled on the **HPC** in such a way that allows us to use it's executable programs from anywhere within the **HPC**. It does so by using what are known as runtime libraries, in the form of `.so` or shared object files. These libraries contain most of the actual code the programs use. And so, certain path variables in your `csh` environment need to be updated, so it can find the executables, and the `.so` files they require, whenever you run them.  
+**<em>dpd_cpp</em>** has been compiled on the **HPC** in such a way that allows us to use it's executable programs from anywhere within the **HPC**. It does so by using what are known as runtime libraries, in the form of `.so` or shared object files. These libraries contain most of the actual code the programs use. And so, certain path variables in your `csh` environment need to be updated, so it can find the executables, and the `.so` files they require, whenever you run them.  
   
-Instructions for updating your paths as well as compiling **_dpd_cpp_** are given below. You can also find a brief description of **_dpd_cpp_**'s current executable programs which build and process our triblock simulations.
+Instructions for updating your paths as well as compiling **<em>dpd_cpp</em>** are given below. You can also find a brief description of **<em>dpd_cpp</em>**'s current executable programs which build and process our triblock simulations.
   
 ### Configuring your `csh` environment
 There's a short `bash` script on the **HPC** which you can run to update your `csh` path variables. If you log on to the **HPC** and type the commands below, you should get similar output as to what has been shown.  
@@ -113,7 +113,7 @@ The following shows to run `triblockProcessor` to process a BAB triblock traject
 </pre>
 
 ### Compiling `libdpd.so` and the executables
-If you need to recompile the executables or **_dpd_cpp_**'s runtime library `libdpd.so` on the **HPC**, you can do so easily using the commands below. 
+If you need to recompile the executables or **<em>dpd_cpp</em>**'s runtime library `libdpd.so` on the **HPC**, you can do so easily using the commands below. 
 
 <pre class="terminal">
 
