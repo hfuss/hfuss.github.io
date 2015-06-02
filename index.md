@@ -1,13 +1,5 @@
 ---
 title: Home
-layout: default
+layout: home
 ---
 
-## Hello World!
-
-I'm gonna put some stuff here soon.
-
-<a href="SETUP.html">See how to setup dpd_cpp.</a>
-
-
-<!-- Don't post this one. -->

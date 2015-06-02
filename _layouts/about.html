@@ -1,0 +1,30 @@
+{% include header.html %}
+
+<style type="text/css">
+body {
+background-image: url(/img/background.jpg);
+background-size: cover;
+}
+
+#box {
+width: 960px;
+height: 400px;
+margin: 0px auto;
+background: #fff;
+color: #000;
+padding: 60px;
+border-color: black;
+}
+</style>
+
+      <body>
+
+        <div id="box">
+
+        {{ content }}
+
+        </div>
+
+      </body>
+
+{% include footer.html %}
