@@ -1,19 +1,18 @@
 code {
     border: 1px solid #ddd;
     background-color: #eef;
-    font-size: 85%;
     padding: 0 .2em;
 }
 
 .terminal {
-    border: 1px solid black;
-    background-color: black;
-    font-size: 85%;
-    color: #aadd99;
+    border: 1px solid #505a58;
+    background-color: #505a58;
+    color: white;
+    text-shadow: black 0.1em 0.1em 0.2em;
   }
 
 .terminal code {
-    background-color: black;
+    background-color: #505a58;
 }
 
 

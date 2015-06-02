@@ -6165,3 +6165,51 @@ a.badge:focus {
 .affix {
   position: fixed;
 }
+
+/******************************************************************************************************************/
+/* http://stackoverflow.com/questions/17456010/changing-navbar-color-in-twitters-bootstrap-2-3-2 */
+/* set the background-color to red */
+.navbar-inner {
+  background-color: #585754;
+  /* remove the gradient */
+  background-image: none;
+  /* set font color to white */
+  color: #e3dfd5;
+  border-color: #e3dfd5;
+  text-shadow: black 0.1em 0.1em 0.2em;
+}   
+
+/* menu items */
+
+/* set the background of the menu items to pink and default color to #585754 */
+.navbar .nav > li > a {
+  background-color: #585754;
+  color: #e3dfd5;
+}
+
+/* set hover and focus to lightblue */
+.navbar .nav > li > a:focus,
+.navbar .nav > li > a:hover {
+  background-color: transparent;
+  color: #e3dfd5;
+}
+
+/* set active item to darkgreen */
+.navbar .nav > .active > a,
+.navbar .nav > .active > a:hover,
+.navbar .nav > .active > a:focus {
+  background-color: #e3dfd5;
+  color: #585754;
+  border-color: #e3dfd5;
+}
+
+/* set font color and background of the project name (brand) */
+.navbar .brand {
+  background-color: #585754;
+  color: #e3dfd5;
+  text-shadow: black 0.1em 0.1em 0.2em;
+}
+
+.navbar .nav > li > a{
+  text-shadow: black 0.1em 0.1em 0.2em;
+}
