@@ -3,13 +3,9 @@ title: Home
 layout: default
 ---
 
-<h1> 
-  Hello World!
-</h1>
+## Hello World!
 
-<p>
-  I'm gonna put some stuff here soon.
-</p>
+I'm gonna put some stuff here soon.
 
 <a href="SETUP.html">See how to setup dpd_cpp.</a>
 
