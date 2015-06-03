@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>What's The Fuss?</title>
+    <title>whats.the.fuss?</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
 
@@ -35,12 +35,15 @@ v-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#"><b> What's The Fuss?</b></a>
+          <a class="brand" href="#"><b> whats.the.fuss?</b></a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="/"><em>Home</em></a></li>
-              <li><a href="/"><em>The Desolation of Blog</em></a></li>
-              <li><a href="/about.html"><em>About</em></a></li>
+              <li><a href="/"><em>home</em></a></li>
+              <li><a href="/desolation_blog.html"><em>what.ive.learned</em></a></li>
+              <li><a href="/about.html"><em>blockhead.games</em></a></li>
+              <li><a href="/about.html"><em>research</em></a></li>
+              <li><a href="/about.html"><em>miscellaneous</em></a></li>
+              <li><a href="/about.html"><em>about.me</em></a></li>
             </ul>
           </div>
         </div>
@@ -53,8 +56,10 @@ v-collapse">
    <!-- syntax highlighting CSS -->
    <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
 
-
-   <h2>Setting up <em>dpd_cpp</em> on the HPC</h2>
+<div class="row-fluid">
+  <div class="span10">
+    <body font-size: 125%>
+      <h2>Setting up <em>dpd_cpp</em> on the HPC</h2>
 
 <p><br>
 <strong><em>dpd_cpp</em></strong> has been compiled on the <strong>HPC</strong> in such a way that allows us to use it&#39;s executable programs from anywhere within the <strong>HPC</strong>. It does so by using what are known as runtime libraries, in the form of <code>.so</code> or shared object files. These libraries contain most of the actual code the programs use. And so, certain path variables in your <code>csh</code> environment need to be updated, so it can find the executables, and the <code>.so</code> files they require, whenever you run them.  </p>
@@ -67,17 +72,17 @@ v-collapse">
 
 <pre class="terminal">
 
-    $ cd /gpfs_partners/yingling/backup/Fuss/dpd_cpp/dpd_cpp/
-    $ ./configureHPC.sh
-        You need to run: `source ~/.cshrc` when this is done running.
-        You need to run: `source ~/.cshrc` when this is done running.
-        You need to run: `source ~/.cshrc` when this is done running.
-    $ source ~/.cshrc
-    $ ./configureHPC.sh 
-        Path already up-to-date.
-        LD_LIBRARY_PATH already up-to-date.
-        LD_LIBRARY_PATH already up-to-date.
-    $  
+  $ cd /gpfs_partners/yingling/backup/Fuss/dpd_cpp/dpd_cpp/
+  $ ./configureHPC.sh
+    You need to run: `source ~/.cshrc` when this is done running.
+    You need to run: `source ~/.cshrc` when this is done running.
+    You need to run: `source ~/.cshrc` when this is done running.
+  $ source ~/.cshrc
+  $ ./configureHPC.sh 
+    Path already up-to-date.
+    LD_LIBRARY_PATH already up-to-date.
+    LD_LIBRARY_PATH already up-to-date.
+  $  
 
 </pre>
 
@@ -143,16 +148,16 @@ v-collapse">
 
 <pre class="terminal">
 
-    $ linkerBuilder
-        Enter box length: 36
-        Enter bond length: 0.1
-        Enter polymer volume fraction: 0.1
-        Enter hydrophobic tail length: 4
-        Enter polyelectrolyte (pec) block length: 15
-        Enter linker block length: 4
-        Enter pec block charge density: 1.0
-        Enter desired filename: newdata.dat
-    $
+  $ linkerBuilder
+    Enter box length: 36
+    Enter bond length: 0.1
+    Enter polymer volume fraction: 0.1
+    Enter hydrophobic tail length: 4
+    Enter polyelectrolyte (pec) block length: 15
+    Enter linker block length: 4
+    Enter pec block charge density: 1.0
+    Enter desired filename: newdata.dat
+  $
 
 </pre>  
 
@@ -160,23 +165,23 @@ v-collapse">
 
 <pre class="terminal">
 
-    $ vim params.in
-    $ tail params.in
-        36
-        2
-        1
-        last.xyz
-        testResults.dat
-        4
-        30
-        1.25
-        0.5
-    $ triblockProcessor < params.in > results.out
-    $ tail -n 3 results.out
-            Cores     AvgAgg     AvgDistCores     Stem     Petal
-        AVG:   1.0000 368.0000   0.0000   0.0082   0.9918
-        STDDEV:   0.0000   0.0000   0.0000   0.0000   0.0000
-    $
+  $ vim params.in
+  $ tail params.in
+    36
+    2
+    1
+    last.xyz
+    testResults.dat
+    4
+    30
+    1.25
+    0.5
+  $ triblockProcessor < params.in > results.out
+  $ tail -n 3 results.out
+        Cores     AvgAgg     AvgDistCores     Stem     Petal
+    AVG:   1.0000 368.0000   0.0000   0.0082   0.9918
+    STDDEV:   0.0000   0.0000   0.0000   0.0000   0.0000
+  $
 
 </pre>
 
@@ -186,18 +191,48 @@ v-collapse">
 
 <pre class="terminal">
 
-    $ cd /gpfs_partners/yingling/backup/Fuss/dpd_cpp/dpd_cpp/
-    $ ./compileHPC.sh > myCompile.out
-    $ diff myCompile.out compile.out 
-    $
+  $ cd /gpfs_partners/yingling/backup/Fuss/dpd_cpp/dpd_cpp/
+  $ ./compileHPC.sh > myCompile.out
+  $ diff myCompile.out compile.out 
+  $
 
 </pre>
-    
+  
 
 <p><code>compile.out</code> is a text file containing the output that should be produced by <code>compileHPC.sh</code> if the compilation was successful. So it&#39;s important to redirect the output of <code>compileHPC.sh</code> to another text file, in the example above it was <code>myCompile.out</code>, so the two outputs can be compared.  </p>
 
 <p>If the <code>diff</code> command produces any output then the compilation went wrong, and you should email <a href="mailto:whfuss@ncsu.edu">whfuss@ncsu.edu</a> with a copy of your <code>myCompile.out</code> file.</p>
 
+   </body>
+  </div>
+  <div class="span2">
+    
+    <h3>recent.posts</h3>
+
+    <body>
+    <ul>
+      
+        <li><a href="/2015/06/02/setup.html">06-02-2015 - Setup dpd_cpp</a></li>
+      
+      </ul>
+    </body>
+
+    <h3> about.me </h3>
+    <body>
+      
+<h3> Hello World! </h3>
+
+<body>
+
+<p>I'm gonna put some stuff here soon.</p>
+
+
+</body>
+
+<!-- Don't post this one. -->
+    </body>
+  </div>
+</div>
 
   </div>
 

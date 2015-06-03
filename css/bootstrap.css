@@ -6194,15 +6194,6 @@ a.badge:focus {
   color: #e3dfd5;
 }
 
-/* set active item to darkgreen */
-.navbar .nav > .active > a,
-.navbar .nav > .active > a:hover,
-.navbar .nav > .active > a:focus {
-  background-color: #e3dfd5;
-  color: #585754;
-  border-color: #e3dfd5;
-}
-
 /* set font color and background of the project name (brand) */
 .navbar .brand {
   background-color: #585754;

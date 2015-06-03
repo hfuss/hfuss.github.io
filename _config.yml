@@ -6,7 +6,7 @@ layouts:     ./_layouts
 data_source: ./_data
 collections: null
 
-name: What's The Fuss?
+name: whats.the.fuss?
 highlighter: pygments
 github: [Repository metadata]
 

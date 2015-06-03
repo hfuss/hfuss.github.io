@@ -1,13 +1,7 @@
 ---
-title: About
-layout: about
+title: about.me
+layout: default
 ---
 
-## Hello World!
-
-I'm gonna put some stuff here soon.
-
-<a href="SETUP.html">Sample article.</a>
-
-
-<!-- Don't post this one. -->
+### {{ page.title }}
+{% include about.html %}
