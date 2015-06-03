@@ -3,5 +3,4 @@ title: about.me
 layout: default
 ---
 
-### {{ page.title }}
-{% include about.html %}
+{% include about_content.html %}

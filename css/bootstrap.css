@@ -6176,6 +6176,7 @@ a.badge:focus {
   /* set font color to white */
   color: #e3dfd5;
   border-color: #e3dfd5;
+  border-width: 5px;
   text-shadow: black 0.1em 0.1em 0.2em;
 }   
 
