@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -38,8 +37,7 @@ v-collapse">
           <a class="brand" href="#"><b> whats.the.fuss?</b></a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li><a href="/"><em>home</em></a></li>
-              <li><a href="/recent_posts.html"><em>some.things.ive.learned</em></a></li>
+              <li><a href="/"><em>some.things.ive.learned</em></a></li>
               <li><a href="/games.html"><em>blockhead.games</em></a></li>
               <li><a href="/research_projects.html"><em>research.projects</em></a></li>
               <li><a href="/miscellaneous.html"><em>miscellaneous</em></a></li>
@@ -59,8 +57,54 @@ background-image: url(/img/background.jpg);
 background-size: cover;
 }
 
+#box {
+width: 960px;
+height: 400px;
+margin: 0px auto;
+  background-color: #585754;
+  /* remove the gradient */
+  background-image: none;
+  /* set font color to white */
+  color: #e3dfd5;
+  border-color: #e3dfd5;
+  border-width: 5px;
+  border-style: solid;
+  text-shadow: black 0.1em 0.1em 0.2em;
+padding: 60px;
+}
+</style>
+
       <body>
- 
+
+        <div id="box">
+
+        <h3> recent.posts </h3>
+
+        <ul>
+  
+    <li><a href="/2015/06/04/test.html">06-04-2015 - Setup dpd_cpp</a></li>
+  
+    <li><a href="/2015/06/02/setup.html">06-02-2015 - Setup dpd_cpp</a></li>
+  
+</ul>
+
+    <div class="pagination">
+      <ul>
+        
+        <li><span class="disabled">Prev</span></li>
+        
+        
+        <li><span class="active">1</span></li>
+        
+        
+        
+        <li><span class="disabled">Next</span></li>
+        
+      </ul>
+    </div>
+
+
+        </div>
 
       </body>
 

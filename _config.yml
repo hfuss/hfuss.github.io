@@ -6,6 +6,7 @@ layouts:     ./_layouts
 data_source: ./_data
 collections: null
 
+paginate: 10
 name: whats.the.fuss?
 highlighter: pygments
 github: [Repository metadata]
