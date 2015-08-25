@@ -24,13 +24,18 @@ code {
     transform: rotate(90deg);
 }
 
-img {
+.img-with-text {
+    text-align: justify;
+    width: 180px;
+}
+
+.img-with-text img {
+    margin: 0 auto;
     float: left;
-    width:160px;
-    padding:1px;
+    width:155px;
+    padding:4px;
     border:1px solid #021a40;
     background-color:#e3dfd5;
-    vertical-align: middle;
 }
 
 /* Syntax Highlighting for RedCarpet */
