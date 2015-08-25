@@ -16,9 +16,24 @@ code {
     background-color: #e3dfd5;
 }
 
+#container_2 {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
 
+img {
+    float: left;
+    width:160px;
+    padding:1px;
+    border:1px solid #021a40;
+    background-color:#e3dfd5;
+    vertical-align: middle;
+}
 
-/* Syntax Highlightinh for RedCarpet */
+/* Syntax Highlighting for RedCarpet */
 .highlight  { background: #ffffff; }
 .highlight .c { color: #999988; font-style: italic } /* Comment */
 .highlight .err { color: #a61717; background-color: #e3d2d2 } /* Error */

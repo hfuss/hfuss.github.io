@@ -1,0 +1,259 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>whats.the.fuss?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <style>
+      body {
+        padding-top: 60px;
+      }
+    </style>
+    <link href="/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <link href="/css/syntax.css" rel="stylesheet" type="css/text">
+
+    <script src="/js/bootstrap.js" type="text/javascript"></script>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></sc\
+ript>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target="#navigationbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#"><b> whats.the.fuss?</b></a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><a href="/"><em>some.things.ive.learned</em></a></li>
+              <li><a href="/games.html"><em>blockhead.games</em></a></li>
+              <li><a href="/research_projects.html"><em>research.projects</em></a></li>
+              <li><a href="/schedule.html"><em>current.schedule</em></a></li>
+              <li><a href="/about.html"><em>about.me</em></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+
+
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+
+<div class="row-fluid">
+  <div class="span10">
+    <body>
+      <h2>Setting up <em>dpd_cpp</em> on the HPC</h2>
+
+<p><br>
+<strong><em>dpd_cpp</em></strong> has been compiled on the <strong>HPC</strong> in such a way that allows us to use it&#39;s executable programs from anywhere within the <strong>HPC</strong>. It does so by using what are known as runtime libraries, in the form of <code>.so</code> or shared object files. These libraries contain most of the actual code the programs use. And so, certain path variables in your <code>csh</code> environment need to be updated, so it can find the executables, and the <code>.so</code> files they require, whenever you run them.  </p>
+
+<p>Instructions for updating your paths as well as compiling <strong><em>dpd_cpp</em></strong> are given below. You can also find a brief description of <strong><em>dpd_cpp</em></strong>&#39;s current executable programs which build and process our triblock simulations.</p>
+
+<h3>Configuring your <code>csh</code> environment</h3>
+
+<p>There&#39;s a short <code>bash</code> script on the <strong>HPC</strong> which you can run to update your <code>csh</code> path variables. If you log on to the <strong>HPC</strong> and type the commands below, you should get similar output as to what has been shown.  </p>
+
+<pre class="terminal">
+
+  $ cd /gpfs_partners/yingling/backup/Fuss/dpd_cpp/dpd_cpp/
+  $ ./configureHPC.sh
+    You need to run: `source ~/.cshrc` when this is done running.
+    You need to run: `source ~/.cshrc` when this is done running.
+    You need to run: `source ~/.cshrc` when this is done running.
+  $ source ~/.cshrc
+  $ ./configureHPC.sh 
+    Path already up-to-date.
+    LD_LIBRARY_PATH already up-to-date.
+    LD_LIBRARY_PATH already up-to-date.
+  $  
+
+</pre>
+
+<p>When you initially run <code>configureHPC.sh</code> you may see the &quot;You need to run...&quot; message only once or twice and one or two of the up-to-date messages, that just means you already had some of the required folders in your path variables.  </p>
+
+<p>If you see the &quot;You need to run...&quot; message your first time running <code>configreHPC.sh</code> then you must then run the <code>source ~/.cshrc</code> command to update your environment without having to logout and log back in.  </p>
+
+<p>You can run <code>configureHPC.sh</code> a second time after updating your environment, to make sure you get all three up-to-date messages and that your environment is configured.</p>
+
+<h3>The current executables</h3>
+
+<h5>Builders</h5>
+
+<ul>
+<li><strong>triblockBuilder</strong> - this program generates the <code>newdata.dat</code> for our normal BAB triblock system, a chain with a single PEC block in the center and two hydrophobic tails. It takes the following parameters:
+
+<ul>
+<li>Box length</li>
+<li>Bond length --&gt; Initial distance between beads in a chain, always set to 0.1</li>
+<li>Polymer volume fraction</li>
+<li>Tail length --&gt; if the tails are each 4 beads long, this value is 4</li>
+<li>PEC length</li>
+<li>PEC charge density</li>
+<li>Output filename --&gt; usually set to <code>newdata.dat</code>
+<br><br></li>
+</ul></li>
+<li><strong>linkerBuilder</strong> - generates <code>newdata.dat</code> for the new &quot;linker&quot; BACAB triblock system, a chain made with two PEC diblock chains linked by a stiff polymer block. It takes in the same parameters as <code>triblockBuilder</code> (PEC length has different meaning though), as well as:
+
+<ul>
+<li>Link length</li>
+<li>PEC length --&gt; if each PEC block is 15 beads long, this value is 15</li>
+</ul></li>
+</ul>
+
+<p><strong>NOTE</strong>: If PEC charge density is set to 1.0, the builders do not make an additional atom type for the uncharged PEC bead. So <code>triblockBuilder</code> would only make 3 atom types instead of 4, and <code>linkerBuilder</code> would make 4 instead of 5. This is because <strong>DPD</strong> does not allow atom types to be defined if they are not used. Meaning systems with charge density equal to 1.0 will require a different <code>dpd.in</code> file than those systems with charge density less than 1.0.</p>
+
+<h5>Processors</h5>
+
+<ul>
+<li><strong>triblockProcessor</strong> - this program processes a group of <code>.xyz</code> trajectories for a BAB triblock simulation for every 10th frame of the last 2000 frames. It outputs the means and standard deviations of the measurements to the console, so this program should always have it&#39;s <code>stdout</code> redirected to another file. It takes in the following parameters:
+
+<ul>
+<li>Box length</li>
+<li>Bin size --&gt; size of neighbor list bin, always set to 2</li>
+<li>Number of <code>.xyz</code> files</li>
+<li>The names of the <code>.xyz</code> files</li>
+<li>Output file name --&gt; typically named <code>&lt;group name&gt;_frames_results.dat</code></li>
+<li>Tail length --&gt; if the tails are each 4 beads long, this value is 4</li>
+<li>PEC length</li>
+<li>Micelle cutoff radius --&gt; always set to 1.25</li>
+<li>PBC correction factor --&gt; always set to 0.5
+<br>
+<br></li>
+</ul></li>
+<li><strong>colorTriblock</strong> - this program &quot;colors&quot; a group of <code>.xyz</code> trajectories for a BAB triblock simulation for every 10th frame of the last 2000 frames, so that every stem triblock is type 1 and every petal triblock is type 2. It takes in the same parameters as <code>triblockProcessor</code> except the output file is typically named <code>coloredFrames.xyz</code>. IT DOES NOT NEED ITS <code>stdout</code> REDIRECTED.<br>
+<br></li>
+<li><strong>triblockTime</strong> - this program processes a group of <code>.xyz</code> trajectories for a BAB triblock simulation for every 10th frame of the whole trajectory, in order to get a time evolution. It takes in the same parameters as <code>triblockProcessor</code> except the output file is typically named <code>&lt;group name&gt;_time_evol.dat</code>. IT DOES NOT NEED ITS <code>stdout</code> REDIRECTED.</li>
+</ul>
+
+<h5>Sample Executions</h5>
+
+<p>The following shows how to run <code>linkerBuilder</code> to initialize a BACAB triblock system:</p>
+
+<pre class="terminal">
+
+  $ linkerBuilder
+    Enter box length: 36
+    Enter bond length: 0.1
+    Enter polymer volume fraction: 0.1
+    Enter hydrophobic tail length: 4
+    Enter polyelectrolyte (pec) block length: 15
+    Enter linker block length: 4
+    Enter pec block charge density: 1.0
+    Enter desired filename: newdata.dat
+  $
+
+</pre>  
+
+<p>The following shows to run <code>triblockProcessor</code> to process a BAB triblock trajectory by redirecting its <code>stdin</code> to <code>params.in</code> and its <code>stout</code> to <code>results.out</code>:</p>
+
+<pre class="terminal">
+
+  $ vim params.in
+  $ tail params.in
+    36
+    2
+    1
+    last.xyz
+    testResults.dat
+    4
+    30
+    1.25
+    0.5
+  $ triblockProcessor < params.in > results.out
+  $ tail -n 3 results.out
+        Cores     AvgAgg     AvgDistCores     Stem     Petal
+    AVG:   1.0000 368.0000   0.0000   0.0082   0.9918
+    STDDEV:   0.0000   0.0000   0.0000   0.0000   0.0000
+  $
+
+</pre>
+
+<h3>Compiling <code>libdpd.so</code> and the executables</h3>
+
+<p>If you need to recompile the executables or <strong><em>dpd_cpp</em></strong>&#39;s runtime library <code>libdpd.so</code> on the <strong>HPC</strong>, you can do so easily using the commands below. </p>
+
+<pre class="terminal">
+
+  $ cd /gpfs_partners/yingling/backup/Fuss/dpd_cpp/dpd_cpp/
+  $ ./compileHPC.sh > myCompile.out
+  $ diff myCompile.out compile.out 
+  $
+
+</pre>
+  
+
+<p><code>compile.out</code> is a text file containing the output that should be produced by <code>compileHPC.sh</code> if the compilation was successful. So it&#39;s important to redirect the output of <code>compileHPC.sh</code> to another text file, in the example above it was <code>myCompile.out</code>, so the two outputs can be compared.  </p>
+
+<p>If the <code>diff</code> command produces any output then the compilation went wrong, and you should email <a href="mailto:whfuss@ncsu.edu">whfuss@ncsu.edu</a> with a copy of your <code>myCompile.out</code> file.</p>
+
+   </body>
+  </div>
+  <div class="span2">
+    
+    <h3>recent.posts</h3>
+
+    <body>
+    <ul>
+      
+        <li><a href="/2015/06/02/setup.html">06-02-2015 - Setup dpd_cpp</a></li>
+      
+      </ul>
+    </body>
+
+    <h3> about.me </h3>
+    <body>
+      
+<div>
+<div style="float: left; width: 20%;">
+<h3> Hello World! </h3>
+<img src="/img/profile.jpg"/>
+</div>
+<div style="float: left; width: 80%;">
+
+<p>My name is Hayden Fuss. I am senior at NC State University, double majoring in Materials Science and Engineering, and Computer Science. If you need to contact me, please email me at <a href="mailto:whfuss@ncsu.edu">whfuss@ncsu.edu</a>.</p>
+
+<p>
+For the past two years, I've worked as an undergraduate researcher in the Yingling Research Group, where I write post-processing software for Dissipative Particle Dynamics (DPD) simulations. I write the analysis software in C/C++, and use Python and Bash to submit jobs to NCSU's HPC and plot our results. 
+</p>
+
+<p>
+This past summer, I worked on a team research project at Harvard University where we conducted a big data study of the Boston Marathon bombings using 311 (non-emergency) reports, 911 dispatches, and geocoded tweets from the Boston area. We used existing Python libraries and modules, such as matplotlib and scikit-learn, to plot our data over animated maps of Boston, in order to track how information and sentiment spread throughout the region following the crises. 
+</p>
+
+<p>
+Lastly, I have fun by trying to program video games. I played with programming games first in Java, and then using SDL in C/C++. Although, I am currently experimenting with Unity and taking CSC 481 this semester.
+</p>
+
+<p>
+As far as my strengths go, I am a quick learner, decent at math and physics, and very persistent.
+</p>
+  
+</div>
+</div>
+
+<!-- Don't post this one. -->
+    </body>
+  </div>
+</div>
+
+  </div>
+
+  </body>
+</html>
